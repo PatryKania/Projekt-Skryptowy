@@ -1,0 +1,40 @@
+Patryk Kania
+
+Raport II
+
+Zrobione:
+ - szablon strony głownej
+ - rozwijane menu z produktami
+ - dodano miejsce na dane kontaktowe
+
+Nieprzewidziane problemy podczas pracy:
+ -potrzeba pobrania jquery.min ponieważ samo podłączenie tworzyło znaczne opóznienie przez co nie dziłało sticky menu
+ -kolizja kodu css z ikonami, pobranie usunęło poprzednio użyte
+
+Do ukończenia:
+ - interaktywny koszyk
+ - baza produktów 
+ - możliwość zalogowania
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Archiwum aktualizacji
+
+
+#Update 23.03.2022
+
+ - intalacja wymaganych bibliotek
+ - stworzenie wstępnego szablonu storny głównej
+ - tworzenie głównych zakładek menu 
+ - tworzenie wygladu strony w css
+
+#Update 29.03.2022
+
+ - tworzenie rozwijanego menu za pomoca css
+ - pobranie i dodanie ikon do menu
+ - dodanie do menu opcji zjeżdzania w dół storny
+ - wstepne planowania backendu
+
+
+
+
