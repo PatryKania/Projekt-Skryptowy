@@ -10,7 +10,7 @@ Zrobione:
 Nieprzewidziane problemy podczas pracy:
  -potrzeba pobrania jquery.min ponieważ samo podłączenie tworzyło znaczne opóznienie przez co nie dziłało sticky menu
  -kolizja kodu css z ikonami, pobranie usunęło poprzednio użyte
- -potrzeba nauki node.js
+ -potrzeba poznania node.js
 
 Do ukończenia:
  - interaktywny koszyk
