@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    
+    <script src="jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="css/fontello.css" type="text/css"> 
+
+    <title>Szopi</title>
+    <style>
+        body{
+            background-color:rgba(24, 24, 24,255);
+            margin: 0;    
+        }
+        
+        #container{
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;   
+        }
+        #header{
+            height: 45px;
+            width: 100%;;
+            padding:10px 0;
+            
+        }
+       
+        #menu{
+            clear: both;
+            width: 100%;
+            background-color: rgba(32,32,32,255);
+            padding: 10px 0;
+            text-align: center;
+            
+        }
+      
+       
+        
+        
+        
+        .sticky{
+            width:100%;
+            position:fixed;
+            left:0;
+            top:0;
+            z-index: 100;
+        }
+        #main{    
+            width: 1000px;
+            margin: auto;
+        }
+        p{font-size: 70px;}
+        ol{
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            font-size: 18px;
+            height: 35px;
+            line-height: 200%;
+            display: inline-block;
+        }
+        ol a{
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        ol > li{
+            float: left;
+            width: 200px;
+            height: 40px;
+            
+            
+        }
+        #menu ol>li:hover{ background-color: rgb(83, 82, 82);border-top-left-radius: 10px;border-top-right-radius: 10px;}
+        ol>li>ul{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            height: 40px;
+            display: none;
+            
+        }
+        ol>li>ul>li{
+            background-color: rgb(83, 82, 82);
+           
+            position: relative;
+            z-index: 100;
+            
+            
+           
+
+        }
+        ol>li>ul>li:last-child{
+            border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
+        }
+        ol>li>ul>li:hover{
+            background-color: rgba(32,32,32,255);
+        }
+        ol>li:hover>ul{
+            display: block;
+            
+        }
+       
+        #sticky{
+            background-color: rgba(23,23,23,255);
+        }
+#konto{
+    float: right;
+    font-size: 15px;
+    margin-right: 150px;
+    margin-top: 10px;
+    text-align: center;
+    
+}
+#konto>a{
+    text-decoration: none;
+    color: white;
+}
+#koszyk{
+    float: right;
+    font-size: 15px;
+    margin-right: 150px;
+    margin-top: 10px;
+    text-align: center;
+}
+#koszyk>a{
+    text-decoration: none;
+    color: white;
+}
+#logo{float:left}
+#reklama{text-align: center;width: 1000px;height: 300px;border-radius: 30px;background-color: rgb(219, 15, 15);margin-top: 50px;}
+#reklama b {font-size: 120px;}
+#okazje{border: 1px solid black;width: 1000px;
+height:600px;margin-top: 50px;}
+#stopka{background-color:rgba(23,23,23,255);height: 
+    300px;text-align: center;margin-top: 30px;}
+
+    #kontakt{width: 1000px;margin: auto;}
+    #kontakt a{float: left;color: white;margin-right:50px}
+    #kontakt a:first-child{margin-left: 30px;}
+    </style>
+
+</head>
+<body>
+<div id="container">
+<div id="sticky">
+    <div id="header">
+       
+           <div id="logo"> <H1>LOGO</H1></div>
+           <div id="koszyk"><a href="">
+            <i class="icon-basket"></i>
+            <br>
+               Koszyk</a></div>
+           <div id="konto"><a href="">
+            <i class="icon-user-o"></i>   
+            <br>
+            Twoje konto</a></div>
+            <div style="clear:both"></div>
+      
+        
+    </div>
+
+
+
+  <div id="menu">
+      <ol>
+          
+        <li><a href="#">Elektronika</a>
+            <ul>
+                <li><a href="#"></a>Telefony</li>
+                <li><a href="#"></a>Komputry</li>
+                <li><a href="#"></a>Konsole</li>
+                <li><a href="#"></a>Gaming</li>
+                <li><a href="#"></a>Akcesoria</li> 
+            </ul></li>
+
+        <li><a href="#">Sport i rekreacja</a>
+        <ul>
+            <li><a href="#"></a>Piłka nożna</li>
+            <li><a href="#"></a>Bieganie</li>
+            <li><a href="#"></a>Siłownia</li>
+            <li><a href="#"></a>Chodzenie</li>
+            <li><a href="#"></a>Sporty walki</li> 
+        </ul>
+    </li>
+        <li><a href="#">Dom i ogród</a>
+            <ul>
+                <li><a href="#"></a>Narzędzia</li>
+                <li><a href="#"></a>Majsterkowanie</li>
+                <li><a href="#"></a>Dekoracje</li>
+                <li><a href="#"></a>Oświetlenie</li>
+                
+            </ul></li>
+        <li><a href="#">Motoryzacja</a>
+            <ul>
+                <li><a href="#"></a>Akcesoria do samochodow</li>
+                <li><a href="#"></a>Mycie i konserwacja</li>
+                
+                 
+            </ul></li>
+        <li><a href="#">AGD</a>
+            <ul>
+                <li><a href="#"></a>Duze AGD</li>
+                <li><a href="#"></a>Drobnne AGD</li> 
+            </ul></li>
+
+      </ol>
+      
+    </div>
+
+</div>
+
+    <div id="main">
+        <div id="reklama"><b>Kod na -10%:
+        </b><br>
+    <b>SZOPI10</b></div>
+        <div id="okazje"></div>
+        
+    </div>
+
+    <div id="stopka">
+        <div id="kontakt">
+           <a href=""><i class="icon-facebook-squared"></i></a>
+           <a href=""> <i class="icon-instagram"></i></a>
+            <a href=""><div id="tel"><i class="icon-phone-squared"></i></a>
+            <a href=""><div id="mail"><i class="icon-mail-squared"></i></a>
+            
+        </div>
+        <div></div>
+    </div>
+
+</div>
+<script>
+ 
+    $(document).ready(function() {
+    var NavY = $('#sticky').offset().top;
+      
+    var stickyNav = function(){
+    var ScrollY = $(window).scrollTop();
+           
+    if (ScrollY > NavY) { 
+        $('#sticky').addClass('sticky');
+    } else {
+        $('#sticky').removeClass('sticky'); 
+    }
+    };
+      
+    stickyNav();
+      
+    $(window).scroll(function() {
+        stickyNav();
+    });
+    });
+     
+</script>
+</body>
+</html>
