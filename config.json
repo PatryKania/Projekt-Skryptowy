@@ -41,6 +41,12 @@
       "css": "mail-squared",
       "code": 61849,
       "src": "fontawesome"
+    },
+    {
+      "uid": "0d20938846444af8deb1920dc85a29fb",
+      "css": "logout",
+      "code": 59393,
+      "src": "fontawesome"
     }
   ]
 }

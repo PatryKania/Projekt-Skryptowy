@@ -1,5 +1,6 @@
 
 .icon-basket:before { content: '\e800'; } /* '' */
+.icon-logout:before { content: '\e801'; } /* '' */
 .icon-phone-squared:before { content: '\f098'; } /* '' */
 .icon-instagram:before { content: '\f16d'; } /* '' */
 .icon-mail-squared:before { content: '\f199'; } /* '' */
