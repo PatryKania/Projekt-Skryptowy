@@ -2,6 +2,7 @@ body
 {
     background-color:rgba(24, 24, 24,255);
     font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;  
     color: white;
 }
@@ -143,6 +144,7 @@ input[type="checkbox"]
     margin-left: auto;
     margin-right: auto;
     color: white;   
+    /* //position:relative; */
 }
 #header{
     height: 45px;
@@ -173,7 +175,9 @@ input[type="checkbox"]
 }
 #main{    
     width: 1000px;
+    height: auto;
     margin: auto;
+   
 }
 p{font-size: 70px;}
 ol{
@@ -270,17 +274,52 @@ color: white;
 #ad{text-align: center;width: 1000px;height: 300px;border-radius: 30px;background-color: rgb(219, 15, 15);margin-top: 50px;margin-bottom: 20px;}
 #ad b {font-size: 120px;}
 #okazje{width: 1000px;margin-top: 20px;
-height:600px; }
+height:600px;
+ }
 #okazje div{
-    width: 800px;height: 250px;margin: 25px;background-color: rgb(35, 35, 35);border-radius: 5%;
+    width: 100%;height: 100%;margin:0;background-color: rgb(35, 35, 35);border-radius: 5%;
 }
-#okazje div h5,img{
-    float: left;text-align: center;margin-left: 50px;margin-top:30px;
+#okazje div h5{
+   font-size:50px;
+   margin:0;
+   text-align: center;
+   
+   
 }
-#okazje div h5 {
-   font-size: 25px;margin-left: 70px;
+#okazje s{
+    font-size: 40px;
+   width: 50%;
+   margin-left: 60%;
+    margin-top:50px;
+   
+    display: block;
+   
+}
+#okazje span{
+font-size: 150px;
+display: block;
+margin-left: 60%;
+margin-top:50px;
+
+}
+#okazje div img{
+    margin-left: 50px;
+    margin-top:20px;
+    float: left;
 }
 
+
+
+#okazje button{
+    background-color: red;
+    font-size: 25px;
+    border-radius: 10px;
+    border: none;
+    bottom: 0;
+    margin-left: 60%;
+    margin-top: 60px;
+    display: block;
+}
 #stopka{background-color:rgba(23,23,23,255);height: 
 300px;text-align: center;margin-top: 30px;}
 #kontakt{width: 1000px;margin: auto;}
@@ -300,23 +339,38 @@ color: white;
     text-align: center;
 }
 #podsumowanie{
-    position:absolute;
-    bottom:0;
-    width:100%;
+   margin: auto;
+    width:800px;
     background-color:rgba(23,23,23,255);height: 
     200px;
     font-size: 20px;
     text-align: center;
+    clear: both;
+    margin-top: auto;
+}
+#podsumowanie>{
+    text-align: center;
 }
 #podsumowanie h6{
     font-size: 20px;
+    text-align: center;
 
-    
+}
+
+#basket-views{
+    margin: auto;
+    width: 800px;
+    height: auto;
 }
 #basket-views div{
-    
-    width: 1000px;
-    height: 200px;
+    text-align: center;
+    width: 100%;
+   height: auto;
+   margin-top: 10px;
+   
+}
+#basket-views div div{
+margin: 0;;
 }
 #basket-views div img{
     margin: 0;
@@ -331,4 +385,100 @@ color: white;
     
     float: right;
 }
+#nav{
+    float:left;
+width: 200px;
+height: auto;
+background-color: rgb(35, 35, 35);border-radius: 3%;
+margin: 25px 25px;
+    
+}
+#nav p{
+    font-size: 30px;
+    text-align: center
+}
+/* #lista{
+    float:left;
+}
+#lista div{
+    width:700 ;
+    margin: 25px;
+    height: 200px;
+    border-radius: 6%;
+    background-color:rgba(30,30,30);
+} */
+#lista{width: 700px;margin-top: 0px ;margin-left: 15px;margin-right: 0px;float:left;
+     }
+    #lista div{
+        width: 100%;height: 250px;margin: 25px;background-color: rgb(35, 35, 35);border-radius: 5%;
+        
+    }
+    .nazwa{
+         font-size: 25px;line-height: 100%;text-align: center;line-height: 180px;margin: 0;height: 100px;
+    }
+    .cena{
+        font-size: 50px;margin: 0;
+    }
 
+    #lista button{
+        background-color: red;
+        font-size: 25px;
+        border-radius: 10px;
+        border: none;
+        margin-left: 25px;
+        margin-top: 55px;
+       font-weight: bold;
+    }
+    #lista img{
+        width: 150px;float: left;
+        margin: 15px;
+    }
+    #nav input[type="submit"]{
+        width: 100px;
+        margin-top:15px;
+        margin-left: 40px;
+        margin-bottom: 15px;
+    }
+    #logo2 {
+    
+           font-size: 48px;
+    }
+    #basket-views div{
+        margin: 0;
+    }
+    #basket-views div div{
+        margin: 20px 10px;
+       
+     }
+     #basket-views div div :nth-child(1){
+       margin: 15px;
+      
+    }
+    #basket-views div div :nth-child(2){
+        font-size: 25px;
+        margin-left: 30px;
+        margin-right: 100px;
+       
+    }
+    #basket-views div div :nth-child(3){
+        font-size: 40px;
+        margin-left: 50px;
+        /* /* line-height: 150px; */
+        float: left ;
+        margin-right: 100px;
+        
+    } 
+    #basket-views div div button{
+        /* margin-right: 50px;
+        margin-left: 100px; */
+        float: right;
+    }
+  h6{
+      text-align: center;
+  } 
+  #basket-views div{
+      margin: auto;
+      width: 800px;
+      min-height: 200px;
+  }
+ 

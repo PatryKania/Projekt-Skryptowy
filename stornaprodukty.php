@@ -1,24 +1,12 @@
 <?php
-    
+  
     require_once "createdb.php";
     require_once "component.php";
+    $database = new CreateDb("szopi","produkty");
     require_once "connect.php";
     $con = @new mysqli($host, $db_user, $db_password, $db_name);
+    ?>
 
-    $db= new CreateDB("szopi","produkty");
-    if(isset($_POST['remove'])){
-        if($_GET['action']=='remove'){
-            foreach($_SESSION['cart'] as $key=>$value){
-                if($value['product_id']==$_GET['id']){
-                    unset($_SESSION['cart'][$key]);
-                    echo"<script>alert('produkt usuniety')</script>";
-                    echo"<script>window.location='koszyk.php'</script";
-                }
-            }
-        }
-    }
-    
-?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -27,18 +15,18 @@
     <script src="jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="css/fontello.css" type="text/css"> 
 <link rel="stylesheet" href="style.css" type="text/css" />
-    <title>Szopi-koszyk</title>
+    <title>Szopi</title>
     
         
 
 </head>
 <body>
-
 <div id="container">
-<div id="sticky">
-    <div id="header">
+
+    <div id="sticky">
+        <div id="header">
        
-    <a href="index.php"><div id="logo"> <H1 id='logo2'>SZOPI</H1></div> </a>
+        <a href="index.php"><div id="logo"> <H1 id='logo2'>SZOPI</H1></div> </a>
            <div id=wyloguj>
             <?php
                 
@@ -53,7 +41,7 @@
            <div id="koszyk"><a href="koszyk.php">
             <i class="icon-basket"></i>
             <br>
-            Koszyk
+               Koszyk
                <?php
                 if(isset($_SESSION['cart'])){
                     $count = count($_SESSION['cart']);
@@ -62,14 +50,14 @@
                 {
                     echo "<span id='licznik-koszyk'>0</span>";
                 }
-  ?>
+            ?>
             </a></div>
-           <div id="konto"><a href="konto.php">
+            <div id="konto"><a href="konto.php">
             <i class="icon-user-o"></i>   
             <br>
             Twoje konto</a></div>
 
-            <div style="clear:both"></div>
+        <div style="clear:both"></div>
       
         
     </div>
@@ -86,7 +74,7 @@
             <a href="stornaprodukty.php?kategoria=Komputery"><li>Komputry</li></a>
             <a href="stornaprodukty.php?kategoria=Konsole"><li>Konsole</li></a>
             <a href="stornaprodukty.php?kategoria=Gaming"><li>Gaming</li></a>
-           
+            
             </ul></li>
 
         <li><a href="#">Sport i rekreacja</a>
@@ -100,7 +88,7 @@
         <li><a href="#">Dom i ogród</a>
             <ul>
             <a href="stornaprodukty.php?kategoria=Narzędzia"><li>Narzędzia</li></a>
-         
+          
             <a href="stornaprodukty.php?kategoria=Dekoracje"><li>Dekoracje</li></a>
             <a href="stornaprodukty.php?kategoria=Oświetlenie"><li>Oświetlenie</li></a>
                 
@@ -121,45 +109,92 @@
       </ol>
       
     </div>
-        </div>
-        <div id="basket-views">
-          <H1>Koszyk</H1>
-            <hr>
+
+    </div>
+
+            <div id="main">
+
+                <div id="nav">
+                   <p>Sortuj:</p>
+                   
+                <form name='sort' method="POST">
+                <input type="checkbox" name="rosnaco" value="Desert Safari" />
+                <label for="rosnaco">Cena rosnąco</label>
+                <br>
+                <input type="checkbox" name="malejaco" value="Desert Safari" />
+                <label for="malejaco">Cena malejąca</label>
+                <input type="submit" value="zastosuj">
+                </form>
+                </div>
                 <div id="lista">
-<?php
-$total=0;
-if(isset($_SESSION['cart'])){
-    $product_id=array_column($_SESSION['cart'],'product_id');
-    $result=$db->getData4();
-    while($row=mysqli_fetch_assoc($result)){
-        foreach($product_id as $id){
-            if($row['id']==$id){cartElement($row['obrazek'],$row['nazwa'],$row['cena'],$row['id']);
-                $total=$total+(int)$row["cena"];
-            }
-        }
+
+                <?php
+                $kategoria=$_GET['kategoria'];
+                $_SESSION['kategoria']=$kategoria;
+                 if(isset($_POST['rosnaco']))
+                 {
+                    $result = $database->getData2($kategoria);
+                 }
+                 elseif(isset($_POST['malejaco']))
+                 {
+
+                    $result = $database->getData3($kategoria);
+                 }
+                 else
+                 {
+                    $result = $database->getData($kategoria);
+                 };
+                
+           
+             while($row = mysqli_fetch_assoc($result)){
+                 component("<p class='nazwa'>".$row['nazwa']."</p>","<p class='cena'>".$row['cena'],$row['obrazek'],$row['id']);
+             }
+             
+             ?>
+
+
+                </div>
+
+
+
+                </div>
+
+
+
+
+</div>
+<script>
+ 
+    $(document).ready(function() {
+    var NavY = $('#sticky').offset().top;
+      
+    var stickyNav = function(){
+    var ScrollY = $(window).scrollTop();
+           
+    if (ScrollY > NavY) { 
+        $('#sticky').addClass('sticky');
+    } else {
+        $('#sticky').removeClass('sticky'); 
     }
-}else{
-    echo "<h5>Koszyk jest pusty</h>";
-}
+    };
+      
+    stickyNav();
+      
+    $(window).scroll(function() {
+        stickyNav();
+    });
+    });
+     
+//     $(document).ready(function(){
+//     $('a').click(function(){
+//         var kat=$(this).attr('id');
 
-?>
+       
+//     });
+   
+// });
 
-</div>
-</div>
-<div id='podsumowanie'>
-<hr>
-<?php
-if(isset($_SESSION['cart'])){
-    $count=count($_SESSION['cart']);
-    echo "<h6>Ilosc przedmiotow: ($count )</h6>";
-}else{
-    echo "<h6>Cena:(0 items)</h6>";
-}
-?>
-
-
-    <?php echo "<h6>Całkowity koszt: ".$total." zł</h6>";?>
-
-</div>
+    
+</script>
 </body>
 </html>

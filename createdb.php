@@ -1,4 +1,7 @@
 <?php
+session_start();
+
+$kategoria=$_SESSION['kategoria'];
 
 class CreateDB
 {
@@ -57,8 +60,42 @@ public function __construct(
             return false;
         }
     }
-    public function getData(){
-        $sql= "SELECT * FROM $this->tablename";
+    // $kategoria=$_SESSION['kategoria'];
+    public function getData( $kategoria){
+        $sql= "SELECT * FROM $this->tablename WHERE kategoria='$kategoria' ";
+        $result=mysqli_query($this->con,$sql);
+
+        if(mysqli_num_rows($result)>0){
+            return $result;
+        }
+    }
+    
+    public function getData2($kategoria){
+        $sql= "SELECT * FROM $this->tablename WHERE kategoria='$kategoria'order by cena ";
+        $result=mysqli_query($this->con,$sql);
+
+        if(mysqli_num_rows($result)>0){
+            return $result;
+        }
+    }
+    public function getData3($kategoria){
+        $sql= "SELECT * FROM $this->tablename WHERE kategoria='$kategoria' order by cena desc";
+        $result=mysqli_query($this->con,$sql);
+
+        if(mysqli_num_rows($result)>0){
+            return $result;
+        }
+    }
+    public function getData4( ){
+        $sql= "SELECT * FROM $this->tablename  ";
+        $result=mysqli_query($this->con,$sql);
+
+        if(mysqli_num_rows($result)>0){
+            return $result;
+        }
+    }
+    public function getData5( ){
+        $sql= "SELECT * FROM $this->tablename where stan='promocja'  ";
         $result=mysqli_query($this->con,$sql);
 
         if(mysqli_num_rows($result)>0){

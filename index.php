@@ -1,5 +1,5 @@
 <?php
-   session_start();
+   
     require_once "createdb.php";
     require_once "component.php";
     $database = new CreateDb("szopi","produkty");
@@ -27,7 +27,7 @@
         }else{
             $item_array=array('product_id'=>$_POST['product_id']);
             $_SESSION['cart'][0]=$item_array;
-            print_r($_SESSION['cart']);
+            //print_r($_SESSION['cart']);
         }
     }
 ?>
@@ -38,7 +38,7 @@
     
     <script src="jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="css/fontello.css" type="text/css"> 
-<link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
     <title>Szopi</title>
     
         
@@ -49,7 +49,7 @@
 <div id="sticky">
     <div id="header">
        
-          <a href="index.php"><div id="logo"> <H1>LOGO</H1></div> </a> 
+          <a href="index.php"><div id="logo"> <H1 id='logo2'>SZOPI</H1></div> </a> 
            <div id=wyloguj>
             <?php
                 
@@ -92,41 +92,41 @@
           
         <li><a href="#">Elektronika</a>
             <ul>
-            <a href=""><li>Telefony</li></a>
-            <a href="#"><li>Komputry</li></a>
-            <a href="#"><li>Konsole</li></a>
-            <a href="#"><li>Gaming</li></a>
-            <a href="#"><li>Akcesoria</li> </a>
+            <a href="stornaprodukty.php?kategoria=Telefony"><li>Telefony
+            </li></a>
+            <a href="stornaprodukty.php?kategoria=Komputery"><li>Komputry</li></a>
+            <a href="stornaprodukty.php?kategoria=Konsole"><li>Konsole</li></a>
+            <a href="stornaprodukty.php?kategoria=Gaming"><li>Gaming</li></a>
+            
             </ul></li>
 
         <li><a href="#">Sport i rekreacja</a>
         <ul>
-        <a href="#"><li>Piłka nożna</li></a>
-        <a href="#"><li>Bieganie</li></a>
-        <a href="#"><li>Siłownia</li></a>
-        <a href="#"><li>Chodzenie</li></a>
-        <a href="#"><li>Sporty walki</li> </a>
+        <a href="stornaprodukty.php?kategoria=Pilka"><li>Piłka nożna</li></a>
+        <a href="stornaprodukty.php?kategoria=Bieganie"><li>Bieganie</li></a>
+        <a href="stornaprodukty.php?kategoria=Siłownia"><li>Siłownia</li></a>
+        <a href="stornaprodukty.php?kategoria=Sportywalki"><li>Sporty walki</li> </a>
         </ul>
     </li>
         <li><a href="#">Dom i ogród</a>
             <ul>
-            <a href="#"><li>Narzędzia</li></a>
-            <a href="#"><li>Majsterkowanie</li></a>
-            <a href="#"><li>Dekoracje</li></a>
-            <a href="#"><li>Oświetlenie</li></a>
+            <a href="stornaprodukty.php?kategoria=Narzędzia"><li>Narzędzia</li></a>
+          
+            <a href="stornaprodukty.php?kategoria=Dekoracje"><li>Dekoracje</li></a>
+            <a href="stornaprodukty.php?kategoria=Oświetlenie"><li>Oświetlenie</li></a>
                 
             </ul></li>
         <li><a href="#">Motoryzacja</a>
             <ul>
-            <a href="#"><li>Akcesoria do samochodow</li></a>
-            <a href="#"><li>Mycie i konserwacja</li></a>
+            <a href="stornaprodukty.php?kategoria=Samochod"><li>Akcesoria do samochodow</li></a>
+            <a href="stornaprodukty.php?kategoria=Mycie"><li>Mycie i konserwacja</li></a>
                 
                  
             </ul></li>
         <li><a href="#">EKO</a>
             <ul>
-            <a href="#"><li></li></a>
-            <a href="#"><li></li> </a>
+            <a href="stornaprodukty.php?kategoria=jedzenie"><li>Żywność</li></a>
+            <a href="stornaprodukty.php?kategoria=suplementy"><li>Suplementy</li> </a>
             </ul></li>
 
       </ol>
@@ -141,13 +141,13 @@
         </b><br>
     <b>SZOPI10</b></div>
         <div id="okazje">
-             <?php
-            $result = $database->getData();
+              <?php
+            $result = $database->getData5();
              while($row = mysqli_fetch_assoc($result)){
-                 component($row['nazwa'],$row['cena'],$row['obrazek'],$row['id']);
+                 component2($row['nazwa'],$row['cena'],$row['cene2'],$row['obrazek'],$row['id']);
              }
              
-             ?>
+             ?> 
         <div style="clear:both;display:none"></div>
     </div>
 
@@ -188,7 +188,12 @@
     });
      
 
-
+//     $(document).ready(function(){
+//     $('a').click(function(){
+//         let kategoria=$(this).attr('id');
+//     });
+    
+// });
      
 </script>
 </body>

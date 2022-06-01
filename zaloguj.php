@@ -38,7 +38,7 @@
             }
             else{
                 
-                $_SESSION['error']="neprawidłowy login lub hasło!";
+                $_SESSION['error']="neprawidłowy login lub hasło! <a href='zmiana.php'>Zmien haslo</a>";
                 header('Location:login.php');
 
             }
