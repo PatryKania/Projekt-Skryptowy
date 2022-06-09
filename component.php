@@ -43,10 +43,19 @@ function cartElement($obrazek,$nazwa,$cena,$product_id){
         
         
         <button type='submit' name='remove'>Usuń</button>
+      
+       
+      
 </form>
 </div>
     ";
     
     echo $element;
 }
+?>
+<script>
+var ilosc = document.getElementById('ilosc');
+document.createElement(<input type="hidden" name="ilosc" value="ilosc" />);
+</script>
 
+<?php

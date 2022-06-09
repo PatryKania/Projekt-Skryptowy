@@ -29,14 +29,16 @@
 </form>
 
 <a href="register.php">Zarejestuj sie</a>
-    
-</div>
+<br>
 <?php
-if(isset($_SESSION['error']))
+if(isset($_SESSION['erroro']))
 {
-    echo $_SESSION['error'];
+    echo '<div class="error">'.$_SESSION['erroro'].'</div>';
+    unset($_SESSION['erroro']);
 }
 ?>
+</div>
+
 
 </body>
 </html>

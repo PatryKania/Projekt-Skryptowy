@@ -1,5 +1,7 @@
 <?php
     session_start();//zaczyna sesje
+    unset($_SESSION['error']);
+    unset($_SESSION['e_pas1']);
     if((!isset($_POST['login'])) || (!isset($_POST['haslo'])))
     {
 
@@ -38,7 +40,8 @@
             }
             else{
                 
-                $_SESSION['error']="neprawidłowy login lub hasło! <a href='zmiana.php'>Zmien haslo</a>";
+                $_SESSION['erroro']="Nieprawidłowy login lub hasło! <a href='zmiana.php'>Zmien haslo</a>";
+        
                 header('Location:login.php');
 
             }

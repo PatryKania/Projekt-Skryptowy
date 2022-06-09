@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 $kategoria=$_SESSION['kategoria'];
@@ -13,13 +14,14 @@ class CreateDB
     public $con;
 
 
-public function __construct(
-    $dbname="szopi",
+    public function __construct(
+    $dbname="patryk_kania",
     $tablename="produkty",
     $servername="localhost",
-    $username="root",
-    $password="",
+    $username="patrykKania",
+    $password="Przyczlap1202@"
 )
+
 {
     $this->dbname=$dbname;
     $this->tablename = $tablename;
@@ -95,7 +97,8 @@ public function __construct(
         }
     }
     public function getData5( ){
-        $sql= "SELECT * FROM $this->tablename where stan='promocja'  ";
+       // $sql= "SELECT * FROM $this->tablename where stan='promocja'  ";
+       $sql= "SELECT * FROM produkty where stan='promocja'  ";
         $result=mysqli_query($this->con,$sql);
 
         if(mysqli_num_rows($result)>0){

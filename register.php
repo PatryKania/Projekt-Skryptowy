@@ -1,98 +1,3 @@
-
-
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>Rejestracja-szopi</title>
-    <link rel="stylesheet" href="style.css" type="text/css" />
-</head>
-<body>
-    <div id="reg">
-<form method="post"> 
-
-<input type="text" placeholder="login" value="<?php if(isset($_SESSION['memory_nick']))
-{
-    echo $_SESSION['memory_nick'];
-    unset($_SESSION['memory_nick']);
-}
-?>"
-     name="nick"><br>
-<?php
-    if(isset($_SESSION['e_nick']))
-    {
-        echo '<div class="error">'.$_SESSION['e_nick'].'</div>';
-        unset($_SESSION['e_nick']);
-    }
-
-?>
-
-<input type="text" placeholder="e-mail"value="<?php if(isset($_SESSION['memory_email']))
-{
-    echo $_SESSION['memory_email'];
-    unset($_SESSION['memory_email']);
-}
-?>"
-name="email"><br>
-<?php
-    if(isset($_SESSION['e_email']))
-    {
-        echo '<div class="error">'.$_SESSION['e_email'].'</div>';
-        unset($_SESSION['e_email']);
-    }
-
-?>
-
-<input type="password" placeholder="hasło" value="<?php if(isset($_SESSION['memory_password1']))
-{
-    echo $_SESSION['memory_password1'];
-    unset($_SESSION['memory_password1']);
-}
-?>"
- name="haslo1"><br>
-<?php
-    if(isset($_SESSION['e_pas1']))
-    {
-        echo '<div class="error">'.$_SESSION['e_pas1'].'</div>';
-        unset($_SESSION['e_pas1']);
-    }
-
-?>
-
-<input type="password" placeholder=" powtorz hasło" value="<?php if(isset($_SESSION['memory_password2']))
-{
-    echo $_SESSION['memory_password2'];
-    unset($_SESSION['memory_password2']);
-}
-?>"
-name="haslo2"><br>
-<label>
-<input type="checkbox" name="regulamin">Akceptuje regulamin
-</label>
-<?php
-    if(isset($_SESSION['e_regulamin']))
-    {
-        echo '<div class="error">'.$_SESSION['e_regulamin'].'</div>';
-        unset($_SESSION['e_regulamin']);
-    }
-
-?>
-
-<input type="submit" value="Zarejestruj sie">
-</label>
-</form>
-<a href='login.php'>Zaloguj sie</a>
-</div>
-<?php
-if(isset($_SESSION['error']))
-{
-    echo $_SESSION['error'];
-}
-?>
-
-</body>
-</html>
-
 <?php
     session_start();
   
@@ -121,13 +26,21 @@ if(isset($_SESSION['error']))
             $state=false;
             $_SESSION['e_pas1']="Podane hasła nie są identyczne!";
         }
+        $emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
+        if(filter_var($emailB, FILTER_SANITIZE_EMAIL)==false ||($emailB!=$email))
 
+           {
+                $state=false;
+                $_SESSION['e_email']="Podaj poprwany email";
 
-            $_SESSION['memory_nick']=$nick;
-            $_SESSION['memory_email']=$email;
-            $_SESSION['memory_password1']=$pas1;
-            $_SESSION['memory_password2']=$pas2;
+           }
+           //czekbox
+           if(!isset($_POST['regulamin']))
+           {
 
+            $_SESSION['e_regulamin']="Potwierdz regulamin";
+
+           }
         require_once "connect.php";
 
             mysqli_report(MYSQLI_REPORT_STRICT);
@@ -145,7 +58,7 @@ if(isset($_SESSION['error']))
 
                     if(!$res)throw new Exception($con->error);
                     $how_many_email=$res->num_rows;
-                    if($how_many_email=0)
+                    if($how_many_email>0)
                     {
                         $state=false;
                         $_SESSION['e_email']="Emeil istnieje w bazie";
@@ -192,3 +105,79 @@ if(isset($_SESSION['error']))
     }
 
  ?>
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja-szopi</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+    <div id="reg">
+<form method="post"> 
+
+<input type="text" placeholder="login" 
+
+     name="nick"><br>
+<?php
+    if(isset($_SESSION['e_nick']))
+    {
+        echo '<div class="error">'.$_SESSION['e_nick'].'</div>';
+        unset($_SESSION['e_nick']);
+    }
+
+?>
+
+<input type="text" placeholder="e-mail"
+name="email"><br>
+<?php
+    if(isset($_SESSION['e_email']))
+    {
+        echo '<div class="error">'.$_SESSION['e_email'].'</div>';
+        unset($_SESSION['e_email']);
+    }
+
+?>
+
+<input type="password" placeholder="hasło" 
+ name="haslo1"><br>
+<?php
+    if(isset($_SESSION['e_pas1']))
+    {
+        echo '<div class="error">'.$_SESSION['e_pas1'].'</div>';
+        unset($_SESSION['e_pas1']);
+    }
+
+?>
+
+<input type="password" placeholder=" powtorz hasło" 
+name="haslo2"><br>
+<label>
+<input type="checkbox" name="regulamin">Akceptuje regulamin
+</label>
+<?php
+    if(isset($_SESSION['e_regulamin']))
+    {
+        echo '<div class="error">'.$_SESSION['e_regulamin'].'</div>';
+        unset($_SESSION['e_regulamin']);
+    }
+
+?>
+
+<input type="submit" value="Zarejestruj sie">
+</label>
+</form>
+<a href='login.php'>Zaloguj sie</a>
+</div>
+<?php
+if(isset($_SESSION['error']))
+{
+    echo $_SESSION['error'];
+    unset($_SESSION['error']);
+}
+?>
+
+</body>
+</html>
+

@@ -2,10 +2,10 @@
    
     require_once "createdb.php";
     require_once "component.php";
-    $database = new CreateDb("szopi","produkty");
+    $database = new CreateDb("patryk_kania","produkty");
     require_once "connect.php";
     $con = @new mysqli($host, $db_user, $db_password, $db_name);
-
+    unset($_SESSION['error']);
     if(isset($_POST['dodaj']))
     {
         //print_r($_POST['product_id']);
@@ -104,16 +104,16 @@
         <ul>
         <a href="stornaprodukty.php?kategoria=Pilka"><li>Piłka nożna</li></a>
         <a href="stornaprodukty.php?kategoria=Bieganie"><li>Bieganie</li></a>
-        <a href="stornaprodukty.php?kategoria=Siłownia"><li>Siłownia</li></a>
+        <a href="stornaprodukty.php?kategoria=Silownia"><li>Siłownia</li></a>
         <a href="stornaprodukty.php?kategoria=Sportywalki"><li>Sporty walki</li> </a>
         </ul>
     </li>
         <li><a href="#">Dom i ogród</a>
             <ul>
-            <a href="stornaprodukty.php?kategoria=Narzędzia"><li>Narzędzia</li></a>
+            <a href="stornaprodukty.php?kategoria=Narzedzia"><li>Narzędzia</li></a>
           
             <a href="stornaprodukty.php?kategoria=Dekoracje"><li>Dekoracje</li></a>
-            <a href="stornaprodukty.php?kategoria=Oświetlenie"><li>Oświetlenie</li></a>
+            <a href="stornaprodukty.php?kategoria=Oswietlenie"><li>Oświetlenie</li></a>
                 
             </ul></li>
         <li><a href="#">Motoryzacja</a>
@@ -155,8 +155,8 @@
 
     <div id="stopka">
         <div id="kontakt">
-           <a href=""><i class="icon-facebook-squared"></i></a>
-           <a href=""> <i class="icon-instagram"></i></a>
+           <a href="https://www.facebook.com/"><i class="icon-facebook-squared"></i></a>
+           <a href="https://www.instagram.com/"> <i class="icon-instagram"></i></a>
             <a href=""><div id="tel"><i class="icon-phone-squared"></i></a>
             <a href=""><div id="mail"><i class="icon-mail-squared"></i></a>
             

@@ -16,6 +16,8 @@
 
 <input type="text" placeholder="login" name="nick"><br>
 <?php
+unset($_SESSION['error']);
+
     if(isset($_SESSION['e_nick']))
     {
         echo '<div class="error">'.$_SESSION['e_nick'].'</div>';
@@ -26,6 +28,7 @@
 
 <input type="text" placeholder="e-mail"name="email"><br>
 <?php
+
     if(isset($_SESSION['e_email']))
     {
         echo '<div class="error">'.$_SESSION['e_email'].'</div>';
@@ -57,6 +60,7 @@
 if(isset($_SESSION['error']))
 {
     echo $_SESSION['error'];
+    unset($_SESSION['error']);
 }
 ?>
 
